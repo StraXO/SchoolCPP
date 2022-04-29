@@ -1,11 +1,11 @@
 #include <random>
 #include <ctime>
 #include <iostream>
+#include "io.h"
 
 using namespace std;
 
 int randomNumber();
-int readNumber();
 bool endGame();
 void startGame();
 
@@ -30,50 +30,25 @@ int randomNumber()
     return generator(mersenne);
 }
 
-int readNumber() {
-    string guessInput;
-    int inputInt;
-
-    try {
-        cin >> guessInput;
-        inputInt = stoi(guessInput);
-        while (inputInt < 1 || inputInt > 100) {
-            cout << "Input must be between 1 and 100" << endl;
-            cin >> guessInput;
-            inputInt = stoi(guessInput);
-        }
-    } catch (exception& msg) {
-        return readNumber();
-    }
-
-    return inputInt;
-}
-
 void startGame() {
     int currentGuessCount{1};
     const int numberToGuess = randomNumber();
 
-    cout << "Let's play a game. I'm thinking of a number." << endl;
-    cout << "You have 7 tries to guess what it is." << endl;
+    cout << "Let's play a game. I'm thinking of a number.\n";
+    cout << "You have 7 tries to guess what it is.\n";
 
     // start game
     while (currentGuessCount <= 7) {
         cout << "Guess #" << currentGuessCount << ": ";
-        const int guessInput = readNumber();
 
-        if (numberToGuess < guessInput) {
-            cout << "Your guess is too high." << endl;
-        } else if (numberToGuess > guessInput) {
-            cout << "Your guess is too low." << endl;
-        } else {
-            cout << "Correct! You win!" << endl;
+        bool isCorrectResponse = writeResponse(numberToGuess, readNumber());
+        if (isCorrectResponse)
             return;
-        }
 
         currentGuessCount++;
     }
 
-    cout << "Sorry, you lose. The correct number was " << numberToGuess << "." << endl;
+    cout << "Sorry, you lose. The correct number was " << numberToGuess << ".\n";
 }
 
 bool endGame() {
@@ -86,7 +61,7 @@ bool endGame() {
         if (input == "y") {
             startGame();
         } else if (input == "n") {
-            cout << "Thank you for playing." << endl;
+            cout << "Thank you for playing.\n";
             return true;
         }
     }
