@@ -1,4 +1,7 @@
 #include <iostream>
+#include <chrono>
+#include <random>
+#include <ctime>
 
 using namespace std;
 
@@ -20,38 +23,72 @@ int main() {
     }
 
     std::cout << "searchArray OK!!" << std::endl;
+//
+//    int *values = new int[100];
+//    int values_count = 0;
+//
+//    values_count = insertArray(values, values_count, 10);
+//    values_count = insertArray(values, values_count, 1);
+//    values_count = insertArray(values, values_count, 8);
+//    values_count = insertArray(values, values_count, 3);
+//    values_count = insertArray(values, values_count, 6);
+//    values_count = insertArray(values, values_count, 5);
+//    values_count = insertArray(values, values_count, 4);
+//    values_count = insertArray(values, values_count, 7);
+//    values_count = insertArray(values, values_count, 2);
+//    printArray(values, values_count);
+//
+//    delete[] values;
 
-    int *values = new int[100];
+
+    //*insertArray assignment
+
+//    int* values_2 = nullptr;
+//    int values_count_2 = 0;
+//
+//    values_2 = insertArray(values_2, &values_count_2, 10);
+//    values_2 = insertArray(values_2, &values_count_2, 1);
+//    values_2 = insertArray(values_2, &values_count_2, 8);
+//    values_2 = insertArray(values_2, &values_count_2, 3);
+//    values_2 = insertArray(values_2, &values_count_2, 6);
+//    values_2 = insertArray(values_2, &values_count_2, 5);
+//    values_2 = insertArray(values_2, &values_count_2, 4);
+//    values_2 = insertArray(values_2, &values_count_2, 7);
+//    values_2 = insertArray(values_2, &values_count_2, 2);
+//    printArray(values_2, values_count_2);
+//
+//    delete values_2;
+
+
+    // Random Value Assignment
+
+    // initialize the array
+    int* values = nullptr;
     int values_count = 0;
 
-    values_count = insertArray(values, values_count, 10);
-    values_count = insertArray(values, values_count, 1);
-    values_count = insertArray(values, values_count, 8);
-    values_count = insertArray(values, values_count, 3);
-    values_count = insertArray(values, values_count, 6);
-    values_count = insertArray(values, values_count, 5);
-    values_count = insertArray(values, values_count, 4);
-    values_count = insertArray(values, values_count, 7);
-    values_count = insertArray(values, values_count, 2);
-    printArray(values, values_count);
+    // Initialize our mersenne twister with a random seed
+    std::mt19937 mersenne(static_cast<unsigned int>(std::time(nullptr)));
+
+    // Create a reusable random number generator
+    std::uniform_int_distribution<> generator(1, 1000000);
+
+    std::chrono::time_point<std::chrono::system_clock> p1;
+    p1 = std::chrono::system_clock::now();
+
+    for(int i = 0; i < 25000; ++i) {
+        int value = generator(mersenne);
+        // insert the value into the array
+        values = insertArray(values, &values_count, value);
+    }
+
+    std::chrono::time_point<std::chrono::system_clock> p2;
+    p2 = std::chrono::system_clock::now();
+
+    std::cout << "Duration: " <<
+              std::chrono::duration_cast<std::chrono::milliseconds>(p2 - p1).count()
+              << " milliseconds "<< std::endl;
 
     delete[] values;
-
-    int* values_2 = nullptr;
-    int values_count_2 = 0;
-
-    values_2 = insertArray(values_2, &values_count_2, 10);
-    values_2 = insertArray(values_2, &values_count_2, 1);
-    values_2 = insertArray(values_2, &values_count_2, 8);
-    values_2 = insertArray(values_2, &values_count_2, 3);
-    values_2 = insertArray(values_2, &values_count_2, 6);
-    values_2 = insertArray(values_2, &values_count_2, 5);
-    values_2 = insertArray(values_2, &values_count_2, 4);
-    values_2 = insertArray(values_2, &values_count_2, 7);
-    values_2 = insertArray(values_2, &values_count_2, 2);
-    printArray(values_2, values_count_2);
-
-    delete values_2;
 
     return 0;
 }
