@@ -4,7 +4,7 @@ using namespace std;
 
 int searchArray(const int* values, int values_count, int value);
 int insertArray(int* values, int values_count, int value);
-int *insertArray(int *values, int *values_count, int value);
+int* insertArray(int* values, int* values_count, int value);
 void printArray(int* values, int values_count);
 
 int main() {
@@ -21,7 +21,7 @@ int main() {
 
     std::cout << "searchArray OK!!" << std::endl;
 
-    int values[100];
+    int *values = new int[100];
     int values_count = 0;
 
     values_count = insertArray(values, values_count, 10);
@@ -35,21 +35,35 @@ int main() {
     values_count = insertArray(values, values_count, 2);
     printArray(values, values_count);
 
+    delete[] values;
+
+    int* values_2 = nullptr;
+    int values_count_2 = 0;
+
+    values_2 = insertArray(values_2, &values_count_2, 10);
+    values_2 = insertArray(values_2, &values_count_2, 1);
+    values_2 = insertArray(values_2, &values_count_2, 8);
+    values_2 = insertArray(values_2, &values_count_2, 3);
+    values_2 = insertArray(values_2, &values_count_2, 6);
+    values_2 = insertArray(values_2, &values_count_2, 5);
+    values_2 = insertArray(values_2, &values_count_2, 4);
+    values_2 = insertArray(values_2, &values_count_2, 7);
+    values_2 = insertArray(values_2, &values_count_2, 2);
+    printArray(values_2, values_count_2);
+
+    delete values_2;
+
     return 0;
 }
 
 int searchArray(const int* values, int values_count, int value)
 {
-    int position = values_count;
-
-    while (position > 0) {
-        if (values[position-1] < value)
-            return position;
-
-        position--;
+    for (int i = 0; i < values_count; ++i) {
+        if (values[i] >= value)
+            return i;
     }
 
-    return position;
+    return values_count;
 }
 
 
@@ -71,33 +85,37 @@ int insertArray(int* values, int values_count, int value)
     return values_count + 1;// return the new number of elements
 }
 
-int *insertArray(int *values, int *values_count, int value)
+int* insertArray(int* values, int* values_count, int value)
 {
-    // TODO: allocate a new values array with size values_count + 1
+    // allocate a new values array with size values_count + 1
+    int* new_values = new int[*values_count + 1];
 
-    // TODO: copy all existing values from to the new array
+    // copy all existing values from to the new array
+    int index = searchArray(values, *values_count, value);
+    for(int i = *values_count+1; i >= 0; --i) {
+        if (*values_count == 0 || i == index) {
+            new_values[index] = value;
+        } else if (i < index) {
+            new_values[i] = values[i];
+        } else {
+            new_values[i] = values[i - 1];
+        }
+    }
 
-    // TODO: copy the new value into the array, sorted ofcourse!
+    // update values_count
+    *values_count += 1;
 
-    // TODO: update values_count
+    // deallocate the old values array
+    delete[] values;
 
-    // TODO: deallocate the old values array
-
-    return // TODO: return a pointer to the new values array
+    return new_values;// return a pointer to the new values array
 }
 
 void printArray(int* values, int values_count)
 {
-    // loop over values_count and print values[currentIndex]
-    int currentIndex = 0;
-
-    cout << "printArray: ";
-    while (currentIndex < values_count) {
-        cout << values[currentIndex];
-
-        if (currentIndex < values_count-1)
-            cout << ", ";
-
-        currentIndex++;
+    cout << "(" << values_count << ") ";
+    for (int i = 0; i < values_count; ++i) {
+        cout << values[i] << " ";
     }
+    std::cout << std::endl;
 }
