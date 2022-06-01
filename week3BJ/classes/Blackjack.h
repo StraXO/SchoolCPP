@@ -17,6 +17,8 @@ private:
     vector<Card> playerCards;
     vector<Card> dealerCards;
 
+    int randomNumber();
+
 public:
     Blackjack();
 

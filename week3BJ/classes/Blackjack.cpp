@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <algorithm>
+#include <time.h>
+#include <random>
 
 #include "Blackjack.h"
 
@@ -36,8 +38,8 @@ void Blackjack::swapCard(vector<Card> &deck, Card &card1, Card &card2) {
 
 void Blackjack::shuffleDeck(vector<Card> &deck, int times) {
     for (auto i = 0; i < times; i++) {
-        auto card1 = deck[rand() % deck.size()];
-        auto card2 = deck[rand() % deck.size()];
+        auto card1 = deck[randomNumber() % deck.size()];
+        auto card2 = deck[randomNumber() % deck.size()];
         swapCard(deck, card1, card2);
     }
 }
@@ -113,4 +115,10 @@ int Blackjack::countCardsInHand(vector<Card>& cardHand) {
     }
 
     return sum;
+}
+
+int Blackjack::randomNumber() {
+    mt19937 mersenne(random_device{}());
+    uniform_int_distribution<int> distribution(0, 100);
+    return distribution(mersenne);
 }

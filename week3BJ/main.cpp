@@ -59,7 +59,6 @@ void startGame() {
 }
 
 bool playerHits(Blackjack& game) {
-
     std::string input;
     while (input != "h" && input != "s") {
         printPlayerCards(game);
