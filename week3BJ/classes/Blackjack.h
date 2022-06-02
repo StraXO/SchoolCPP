@@ -12,7 +12,6 @@
 using namespace std;
 
 class Blackjack {
-private:
     vector<Card> cardDeck;
     vector<Card> playerCards;
     vector<Card> dealerCards;
@@ -36,9 +35,18 @@ public:
 
     vector<Card> generateDeck();
 
-    void player_hit();
+    void playerHit();
 
-    void dealer_hit();
+    void dealerHit();
+
+    bool playerHits();
+    bool dealerShouldHit();
+
+    void playerTurn();
+    void dealerTurn();
+
+    void printPlayerCards();
+    void printDealerCards();
 
     int countPlayerCardValue();
 

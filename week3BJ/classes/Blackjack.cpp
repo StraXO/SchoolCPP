@@ -80,14 +80,65 @@ void Blackjack::printCard(const Card &card) {
     cout << "Card: " << cardRank << cardSuit << endl;
 }
 
-void Blackjack::player_hit() {
+void Blackjack::playerHit() {
     this->playerCards.emplace_back(this->cardDeck[0]);
     this->cardDeck.erase(this->cardDeck.begin());
 }
 
-void Blackjack::dealer_hit() {
+void Blackjack::dealerHit() {
     this->dealerCards.emplace_back(this->cardDeck[0]);
     this->cardDeck.erase(this->cardDeck.begin());
+}
+
+void Blackjack::playerTurn() {
+    while (playerHits()) {
+        // player gets another card
+        this->playerHit();
+
+        // player has busted
+        if (this->countPlayerCardValue() > 21) {
+            std::cout << "Player busted!" << std::endl;
+            return;
+        }
+    }
+}
+
+bool Blackjack::playerHits() {
+    std::string input;
+    while (input != "h" && input != "s") {
+        this->printPlayerCards();
+        this->printDealerCards();
+
+        std::cout << "Hit or stand? h or s" << std::endl;
+        std::cin >> input;
+    }
+
+    if (input == "h") {
+        return true;
+    }
+
+    return false;
+}
+
+bool Blackjack::dealerShouldHit() {
+    if (this->countDealerCardValue() < 17) {
+        return true;
+    }
+
+    return false;
+}
+
+void Blackjack::dealerTurn() {
+    while (this->dealerShouldHit()) {
+        // dealer gets another card
+        this->dealerHit();
+
+        // dealer has busted
+        if (this->countDealerCardValue() > 21) {
+            std::cout << "Dealer busted!" << std::endl;
+            return;
+        }
+    }
 }
 
 int Blackjack::countPlayerCardValue() {
@@ -121,4 +172,20 @@ int Blackjack::randomNumber() {
     mt19937 mersenne(random_device{}());
     uniform_int_distribution<int> distribution(0, 100);
     return distribution(mersenne);
+}
+
+void Blackjack::printPlayerCards() {
+    std::cout << "Player: " << this->countPlayerCardValue();
+    for (Card playerCard : this->getPlayerCards()) {
+        std::cout << " " << playerCard.getValue();
+    }
+    std::cout << std::endl;
+}
+
+void Blackjack::printDealerCards() {
+    std::cout << "Dealer: " << this->countDealerCardValue();
+    for (Card dealerCard : this->getDealerCards()) {
+        std::cout << " " << dealerCard.getValue();
+    }
+    std::cout << std::endl;
 }
