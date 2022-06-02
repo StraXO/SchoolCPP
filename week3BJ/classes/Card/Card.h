@@ -9,6 +9,9 @@
 #include "cardRank.h"
 
 class Card {
+    cardSuit suit{};
+    cardRank rank{};
+
 public:
     Card(int suit, int rank) {
         this->suit = static_cast<cardSuit>(suit);
@@ -56,10 +59,6 @@ public:
     bool operator==(const Card& other) {
         return this->suit == other.suit && this->rank == other.rank;
     }
-
-private:
-    cardSuit suit{};
-    cardRank rank{};
 };
 
 

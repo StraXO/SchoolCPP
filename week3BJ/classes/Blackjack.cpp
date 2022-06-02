@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <algorithm>
-#include <time.h>
 #include <random>
 
 #include "Blackjack.h"
@@ -97,20 +96,20 @@ void Blackjack::playerTurn() {
 
         // player has busted
         if (this->countPlayerCardValue() > 21) {
-            std::cout << "Player busted!" << std::endl;
+            cout << "Player busted!" << endl;
             return;
         }
     }
 }
 
 bool Blackjack::playerHits() {
-    std::string input;
+    string input;
     while (input != "h" && input != "s") {
         this->printPlayerCards();
         this->printDealerCards();
 
-        std::cout << "Hit or stand? h or s" << std::endl;
-        std::cin >> input;
+        cout << "Hit or stand? h or s" << endl;
+        cin >> input;
     }
 
     if (input == "h") {
@@ -135,7 +134,7 @@ void Blackjack::dealerTurn() {
 
         // dealer has busted
         if (this->countDealerCardValue() > 21) {
-            std::cout << "Dealer busted!" << std::endl;
+            cout << "Dealer busted!" << endl;
             return;
         }
     }
@@ -175,17 +174,17 @@ int Blackjack::randomNumber() {
 }
 
 void Blackjack::printPlayerCards() {
-    std::cout << "Player: " << this->countPlayerCardValue();
+    cout << "Player: " << this->countPlayerCardValue();
     for (Card playerCard : this->getPlayerCards()) {
-        std::cout << " " << playerCard.getValue();
+        cout << " " << playerCard.getValue();
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 void Blackjack::printDealerCards() {
-    std::cout << "Dealer: " << this->countDealerCardValue();
+    cout << "Dealer: " << this->countDealerCardValue();
     for (Card dealerCard : this->getDealerCards()) {
-        std::cout << " " << dealerCard.getValue();
+        cout << " " << dealerCard.getValue();
     }
-    std::cout << std::endl;
+    cout << endl;
 }
