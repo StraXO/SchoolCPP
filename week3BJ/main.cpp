@@ -45,9 +45,14 @@ void startGame() {
 
     // then dealer goes
     dealerHit(game);
-
+    
     printPlayerCards(game);
     printDealerCards(game);
+
+    if (game.countDealerCardValue() > 21) {
+        std::cout << "You win!" << std::endl;
+        return;
+    }
 
     if (game.countPlayerCardValue() > game.countDealerCardValue()) {
         std::cout << "Player wins!" << std::endl;
