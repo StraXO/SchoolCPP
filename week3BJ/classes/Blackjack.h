@@ -21,6 +21,12 @@ class Blackjack {
 public:
     Blackjack();
 
+    ~Blackjack(){
+        cardDeck.~vector();
+        playerCards.~vector();
+        dealerCards.~vector();
+    }
+
     vector<Card> getDeck(){
         return cardDeck;
     }
