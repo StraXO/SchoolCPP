@@ -15,26 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d625ebd-3260-4798-8d9d-0baf98d0a11e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Week6IO/.idea/Week6IO.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Week6IO/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Week6IO/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Week6IO/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/assignmentSVG.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AllocateStatistics.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AllocateStatistics.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dygraph.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dygraph.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/figure.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graph.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shape/Circle.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shape/Circle.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shape/Line.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shape/Line.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shape/Shape.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../week3BJ/classes/Blackjack.h" beforeDir="false" afterPath="$PROJECT_DIR$/../week3BJ/classes/Blackjack.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shape/Line.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/shape/Line.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,13 +52,14 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true"
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "D:/AASchool/SchoolCPP/Oefentoets"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="assignmentSVG" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="assignmentSVG" TARGET_NAME="assignmentSVG" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="assignmentSVG" RUN_TARGET_NAME="assignmentSVG">
@@ -93,7 +76,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655363153889</updated>
-      <workItem from="1655363155616" duration="3115000" />
+      <workItem from="1655363155616" duration="3314000" />
+      <workItem from="1655966960307" duration="43000" />
     </task>
     <servers />
   </component>
