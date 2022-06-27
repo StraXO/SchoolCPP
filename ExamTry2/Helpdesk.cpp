@@ -78,14 +78,14 @@ std::shared_ptr<HelpdeskEmployee> Helpdesk::findHelpDeskEmployee(const std::stri
     auto employee = findEmployee(name);
     auto resolver = std::dynamic_pointer_cast<HelpdeskEmployee>(employee);
     if (!resolver)
-        throw new std::runtime_error("Cannot find employee");
+        throw std::runtime_error("Cannot find employee");
 
     return resolver;
 }
 
 void Helpdesk::solveTicket(int id, const std::string &solver, const std::string &message) const {
     auto ticket = findTicket(id);
-    auto solverEmployee = findEmployee(solver);
+    auto solverEmployee = findHelpDeskEmployee(solver);
     if (solverEmployee == nullptr)
         throw std::runtime_error("Could not find employee");
 
