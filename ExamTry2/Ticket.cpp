@@ -40,11 +40,11 @@ void Ticket::setCreator(const std::shared_ptr<Employee> &creator) {
     Ticket::creator = creator;
 }
 
-const std::shared_ptr<Employee> &Ticket::getSolver() const {
+const std::shared_ptr<HelpdeskEmployee> &Ticket::getSolver() const {
     return solver;
 }
 
-void Ticket::setSolver(const std::shared_ptr<Employee> &solver) {
+void Ticket::setSolver(const std::shared_ptr<HelpdeskEmployee> &solver) {
     Ticket::solver = solver;
 }
 

@@ -9,13 +9,14 @@
 #include <string>
 #include <memory>
 #include "Employee.h"
+#include "HelpdeskEmployee.h"
 
 class Ticket {
     int id;
     std::string date;
     std::string description;
     std::shared_ptr<Employee> creator;
-    std::shared_ptr<Employee> solver;
+    std::shared_ptr<HelpdeskEmployee> solver;
     std::string solvedMessage;
 
 public:
@@ -41,9 +42,9 @@ public:
 
     void setCreator(const std::shared_ptr<Employee> &creator);
 
-    const std::shared_ptr<Employee> &getSolver() const;
+    const std::shared_ptr<HelpdeskEmployee> &getSolver() const;
 
-    void setSolver(const std::shared_ptr<Employee> &solver);
+    void setSolver(const std::shared_ptr<HelpdeskEmployee> &solver);
 
     const std::string& getSolvedMessage() const;
 
